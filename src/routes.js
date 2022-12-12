@@ -73,17 +73,17 @@ const routes = [
       {
         exact: true,
         path: "/my-tasks",
-        component: lazy(() => import("./pages/Tasks")),
+        component: lazy(() => import("./pages/MyTasks")),
       },
       {
         exact: true,
         path: "/tasks-shared-to-me",
-        component: lazy(() => import("./pages/Tasks")),
+        component: lazy(() => import("./pages/TasksSharedToMe")),
       },
       {
         exact: true,
         path: "/profile",
-        component: lazy(() => import("./pages/Tasks")),
+        component: lazy(() => import("./pages/Profile")),
       },
       {
         path: "*",

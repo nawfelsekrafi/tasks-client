@@ -1,9 +1,9 @@
 .main-layout {
     display: grid;
     grid-template-areas:
-        "a a a"
-        "b c c"
-        "b c c";
+        "b a a a a"
+        "b c c c c"
+        "b c c c c";
 }
 
 .sidebar {
