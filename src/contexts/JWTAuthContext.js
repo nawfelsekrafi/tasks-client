@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useReducer } from "react";
 import jwtDecode from "jwt-decode";
 import SplashScreen from "../components/SplashScreen";
 import axios from "../utilities/axios";
-import { Try } from "@mui/icons-material";
 
 const initialAuthState = {
   isAuthenticated: false,
