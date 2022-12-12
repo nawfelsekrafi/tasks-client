@@ -1,20 +1,19 @@
-import useAuth from "../../hooks/useAuth";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import "./index.scss";
 
 const DashboardLayout = ({ children }) => {
-  const { logout } = useAuth();
-  const logoutHandler = async () => {
-    await logout();
-  };
-
   return (
-    <>
-      <Header />
-      <Sidebar />
-      <main>{children}</main>
-      <button onClick={() => logoutHandler()}>logout</button>
-    </>
+    <div className="main-layout">
+      <div className="navbar">
+        <Header />
+      </div>
+      <div className="sidebar">
+        <Sidebar />
+      </div>
+
+      <main className="main-outlet">{children}</main>
+    </div>
   );
 };
 export default DashboardLayout;

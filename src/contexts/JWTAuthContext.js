@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useReducer } from "react";
 import jwtDecode from "jwt-decode";
 import SplashScreen from "../components/SplashScreen";
 import axios from "../utilities/axios";
+import { Try } from "@mui/icons-material";
 
 const initialAuthState = {
   isAuthenticated: false,
@@ -75,16 +76,19 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialAuthState);
 
   const login = async (email, password) => {
-    const response = await axios.post("/login", { email, password });
-    const { token, user } = response.data.data;
-
-    setSession(token);
-    dispatch({
-      type: "LOGIN",
-      payload: {
-        user,
-      },
-    });
+    try {
+      const response = await axios.post("/login", { email, password });
+      const { token, user } = response.data.data;
+      setSession(token);
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const logout = () => {

@@ -50,6 +50,12 @@ const routes = [
   },
   {
     exact: true,
+    guard: GuestGuard,
+    path: "/register",
+    component: lazy(() => import("./pages/Auth/LoginView")),
+  },
+  {
+    exact: true,
     guard: SwitchGuard,
     path: "/switch",
     component: lazy(() => import("./pages/Auth/Switch")),
@@ -62,13 +68,23 @@ const routes = [
       {
         exact: true,
         path: "/",
+        component: lazy(() => import("./pages/Dashboard")),
+      },
+      {
+        exact: true,
+        path: "/my-tasks",
         component: lazy(() => import("./pages/Tasks")),
       },
-      // {
-      //   exact: true,
-      //   path: "/magazine",
-      //   component: lazy(() => import("./pages/Magazine")),
-      // },
+      {
+        exact: true,
+        path: "/tasks-shared-to-me",
+        component: lazy(() => import("./pages/Tasks")),
+      },
+      {
+        exact: true,
+        path: "/profile",
+        component: lazy(() => import("./pages/Tasks")),
+      },
       {
         path: "*",
         component: lazy(() => import("./pages/Auth/NotFound")),

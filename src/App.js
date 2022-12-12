@@ -4,13 +4,10 @@ import { AuthProvider } from "./contexts/JWTAuthContext";
 import routes, { renderRoutes } from "./routes";
 
 function App() {
-
   return (
-        <BrowserRouter>
-          <AuthProvider>
-            {renderRoutes(routes)}
-          </AuthProvider>
-        </BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>{renderRoutes(routes)}</AuthProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,25 @@
+.main-layout {
+    display: grid;
+    grid-template-areas:
+        "a a a"
+        "b c c"
+        "b c c";
+}
+
+.sidebar {
+    // height: 100vh;
+    // position: a;
+    // left: 0;
+    // top: 0;
+    grid-area: b;
+}
+
+.navbar {
+    // width: 100vw;
+
+    grid-area: a;
+}
+
+.main-outlet {
+    grid-area: c;
+}
