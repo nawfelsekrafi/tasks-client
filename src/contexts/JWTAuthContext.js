@@ -1,8 +1,7 @@
-import { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import jwtDecode from "jwt-decode";
 import SplashScreen from "../components/SplashScreen";
 import axios from "../utilities/axios";
-const baseURL = process.env.MAIN_API_URL;
 
 const initialAuthState = {
   isAuthenticated: false,
