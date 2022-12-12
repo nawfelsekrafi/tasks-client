@@ -2,22 +2,8 @@ import React, { useEffect } from "react";
 import NProgress from "nprogress";
 import { Box, LinearProgress } from "@mui/material";
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     alignItems: "center",
-//     backgroundColor: theme.palette.background.default,
-//     display: "flex",
-//     flexDirection: "column",
-//     height: "100%",
-//     justifyContent: "center",
-//     minHeight: "100%",
-//     padding: theme.spacing(3),
-//   },
-// }));
 
 const LoadingScreen = () => {
-  // const classes = useStyles();
-
   useEffect(() => {
     NProgress.start();
 
@@ -27,9 +13,7 @@ const LoadingScreen = () => {
   }, []);
 
   return (
-    <div
-    // className={classes.root}
-    >
+    <div>
       <Box width={400}>
         <LinearProgress />
       </Box>

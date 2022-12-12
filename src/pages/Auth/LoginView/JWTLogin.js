@@ -34,3 +34,4 @@ const JWTLogin = ({ className, ...rest }) => {
 };
 
 export default JWTLogin;
+

@@ -1,12 +1,13 @@
-import React, { Suspense, Fragment, lazy } from "react";
+import React, { Fragment, lazy } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 import LoadingScreen from "./components/LoadingScreen";
 import AuthGuard from "./components/AuthGuard";
 import GuestGuard from "./components/GuestGuard";
+import SwitchGuard from './components/SwitchGuard';
 
 export const renderRoutes = (routes = []) => (
-  <Suspense fallback={<LoadingScreen />}>
+
     <Switch>
       {routes.map((route, i) => {
         const Guard = route.guard || Fragment;
@@ -33,7 +34,6 @@ export const renderRoutes = (routes = []) => (
         );
       })}
     </Switch>
-  </Suspense>
 );
 
 const routes = [
@@ -49,15 +49,21 @@ const routes = [
     component: lazy(() => import("./pages/Auth/LoginView")),
   },
   {
+    exact: true,
+    guard: SwitchGuard,
+    path: '/switch',
+    component: lazy(() => import('./pages/Auth/Switch')),
+  },
+  {
     path: "/",
     guard: AuthGuard,
     layout: DashboardLayout,
     routes: [
-      // {
-      //   exact: true,
-      //   path: "/",
-      //   component: lazy(() => import("./pages/Test")),
-      // },
+      {
+        exact: true,
+        path: "/",
+        component: lazy(() => import("./pages/Tasks")),
+      },
       // {
       //   exact: true,
       //   path: "/magazine",
