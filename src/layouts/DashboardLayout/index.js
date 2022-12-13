@@ -5,9 +5,9 @@ import "./index.scss";
 const DashboardLayout = ({ children }) => {
   return (
     <div className="main-layout">
-      <div className="navbar">
+      {/* <div className="navbar">
         <Header />
-      </div>
+      </div> */}
       <div className="sidebar">
         <Sidebar />
       </div>

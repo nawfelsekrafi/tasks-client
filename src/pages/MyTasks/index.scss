@@ -1,0 +1,30 @@
+.tasks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.task-container {
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 16px;
+}
+
+// .in_progress {
+//     background-color: #FFC163;
+//     color: white;
+// }
+
+// .completed {
+//     background-color: #C0FF33;
+//     color: white;
+// }
+
+// .todo {
+//     background-color: #fb4b4b;
+//     color: white;
+// }

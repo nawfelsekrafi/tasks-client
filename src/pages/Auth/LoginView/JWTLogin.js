@@ -3,7 +3,6 @@ import useAuth from "../../../hooks/useAuth";
 import "./index.scss";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
 
 const JWTLogin = ({ className, ...rest }) => {
   const { login } = useAuth();

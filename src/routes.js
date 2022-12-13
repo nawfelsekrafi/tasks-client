@@ -72,6 +72,11 @@ const routes = [
       },
       {
         exact: true,
+        path: "/add-task",
+        component: lazy(() => import("./pages/NewTask")),
+      },
+      {
+        exact: true,
         path: "/my-tasks",
         component: lazy(() => import("./pages/MyTasks")),
       },
