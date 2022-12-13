@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useDispatch, useSelector } from "react-redux";
+import { createTask } from "../../slices/task";
 import "./index.scss";
 
 const NewTask = () => {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.tasks.newTask);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("todo");
+  const [statuss, setStatuss] = useState("todo");
 
   const submit = async (e) => {
     e.preventDefault();
     try {
-      console.log({ title, description, status });
-      //   await createTask({ title, description, status });
+      const task = { title, description, status: statuss };
+      dispatch(createTask(task));
     } catch (err) {
       console.error(err);
     }
@@ -44,7 +48,7 @@ const NewTask = () => {
               id="todo"
               name="status"
               value="todo"
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) => setStatuss(e.target.value)}
             />
             <label htmlFor="todo">todo</label>
           </div>
@@ -54,7 +58,7 @@ const NewTask = () => {
               id="in-progress"
               name="status"
               value="in progress"
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) => setStatuss(e.target.value)}
             />
             <label htmlFor="in-progress">in progress</label>
           </div>
@@ -64,7 +68,7 @@ const NewTask = () => {
               id="completed"
               name="status"
               value="completed"
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) => setStatuss(e.target.value)}
             />
             <label htmlFor="completed">completed</label>
           </div>

@@ -8,6 +8,11 @@ const initialState = {
     error: null,
   },
   tasksSharedToMe: { data: [], status: "idle", error: null },
+  newTask: {
+    data: [],
+    status: "idle",
+    error: null,
+  },
   status: "idle",
   error: null,
 };
@@ -43,23 +48,20 @@ export const fetchTasksSharedToMe = createAsyncThunk(
     }
   }
 );
-export const createTask = createAsyncThunk(
-  "tasks",
-  async (task) => {
-    let data;
-    try {
-      const response = await axios.post(`tasks`, {...task});
-      data = await response.data.data;
-      if ((response.status = 200)) {
-        return data;
-      }
-      throw new Error(response.statusText);
-    } catch (err) {
-      console.log(err);
-      return Promise.reject(err.message ? err.message : data?.message);
+export const createTask = createAsyncThunk("tasks/post", async (task) => {
+  let data;
+  try {
+    const response = await axios.post(`tasks`, { ...task });
+    data = await response.data.data;
+    if ((response.status = 200)) {
+      return data;
     }
+    throw new Error(response.statusText);
+  } catch (err) {
+    console.log(err);
+    return Promise.reject(err.message ? err.message : data?.message);
   }
-);
+});
 
 const slice = createSlice({
   name: "tasks",
@@ -93,6 +95,17 @@ const slice = createSlice({
     [fetchTasksSharedToMe.rejected]: (state, action) => {
       state.tasksSharedToMe.status = "failed";
       state.tasksSharedToMe.error = action.payload;
+    },
+    [createTask.pending]: (state) => {
+      state.newTask.status = "loading";
+    },
+    [createTask.fulfilled]: (state, action) => {
+      state.newTask.status = "succeeded";
+      state.newTask.data = action.payload;
+    },
+    [createTask.rejected]: (state, action) => {
+      state.newTask.status = "failed";
+      state.newTask.error = action.payload;
     },
   },
 });
